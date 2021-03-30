@@ -1,0 +1,13 @@
+.signup-container{
+    background-color: #ffffff;
+    padding: 10px 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+input[type=submit]
+{
+    background-color:#66bfc5;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+}
