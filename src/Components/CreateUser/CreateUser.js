@@ -1,10 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
 import './CreateUser.css';
 
-const CreateUser = ({handleSubmit,setIsNewUser}) => {
+const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 	const [ user, setUser ] = useContext(UserContext);
 	const [ password, setPassword ] = useState('');
+	// useEffect(() => {
+	// 	const fakeUser = { userInfoInfo };
+	// 	fakeUser.email = 'sarman@gmail.com';
+	// 	setUserInfo(fakeUser);
+	// }, []);
 
 	const isValidPassword = (password) => {
 		const regularExpression = /\d/;
@@ -18,13 +23,13 @@ const CreateUser = ({handleSubmit,setIsNewUser}) => {
 	const handleOnBlur = (event) => {
 		const eventName = event.target.name;
 		const eventValue = event.target.value;
-		console.log(eventName, eventValue);
+		// console.log(eventName, eventValue);
 		let isFieldValid = true;
 
 		if (eventName === 'email') {
 			isFieldValid = isValidEmail(eventValue);
 			if (isFieldValid) {
-				const newUser = { ...user };
+				const newUser = { userInfo };
 				newUser.email = eventValue;
 				newUser.isValidUser = true;
 				setUser(newUser);
@@ -32,10 +37,10 @@ const CreateUser = ({handleSubmit,setIsNewUser}) => {
 		}
 
 		if (eventName === 'name') {
-			const newUser = { ...user };
+			const newUser = { ...userInfo };
 			newUser.name = eventValue;
-			newUser.isValidUser = true;
-			setUser(newUser);
+			// newUser.isValidUser = true;
+			setUserInfo(newUser);
 		}
 
 		if (eventName === 'password') {
@@ -46,16 +51,17 @@ const CreateUser = ({handleSubmit,setIsNewUser}) => {
 		}
 		if (eventName === 'confirmPassword') {
 			if (eventValue === password) {
-				const newUser = { ...user };
+				const newUser = { ...userInfo };
 				newUser.isValidUser = true;
 				newUser.password = password;
-				setUser(newUser);
+				setUserInfo(newUser);
 			}
 		}
 	};
 	return (
 		<div className="signup-container">
 			<h3 className="text-center">Create an account</h3>
+			<h3>{userInfo.email}</h3>
 			<form onSubmit={handleSubmit}>
 				<div className="mb-3">
 					<label className="form-label">Name</label>
@@ -112,8 +118,14 @@ const CreateUser = ({handleSubmit,setIsNewUser}) => {
 			<div className="mb-3">
 				<p className="text-center">
 					Don't have an account?
-					<span className="text-info link" onClick={function () { setIsNewUser(false) }}>
-					create an account</span>
+					<span
+						className="text-info link"
+						onClick={function() {
+							setIsNewUser(false);
+						}}
+					>
+						create an account
+					</span>
 				</p>
 			</div>
 		</div>
