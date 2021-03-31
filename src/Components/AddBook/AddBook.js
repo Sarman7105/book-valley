@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+
 
 const AddBook = () => {
 	const [ imageUrl, setImageUrl ] = useState(null);
 	const [ bookName, setBookName ] = useState(null);
 	const [ authorName, setAuthorName ] = useState(null);
 	const [ price, setPrice ] = useState(null);
-	// const { register, handleSubmit, watch, errors } = useForm();
-	const [ imageURL, setIMageURL ] = useState(null);
 
 	const handleOnBlur = (event) => {
 	    if (event.target.name === 'book') {
@@ -29,23 +27,8 @@ const AddBook = () => {
 	        value: price,
 	        url: imageUrl
 	    };
-	    // const fakeData = {
-	    //     name: 'rahim',
-	    //     bari: 'godagari'
-	    // };
-		// console.log(fakeData);
 		
 		postData(eventData);
-	    // const url = 'http://localhost:5055/addBook';
-	    // fetch(url, {
-	    //     method: 'POST',
-	    //     headers: {
-	    //         'contentType': 'application/json'
-	    //     },
-	    //     body: JSON.stringify(fakeData)
-	    // })
-	    //     .then(res => console.log('server side response', res));
-
 	    event.preventDefault();
 
 	};
@@ -63,27 +46,7 @@ const AddBook = () => {
 		}).then((res) => console.log('server side response', res));
 	}
 
-	//working code
-	// const onSubmit = (data) => {
-	// 	const eventData = {
-	// 		name: data.name,
-	// 		imageURL: imageURL
-	// 	};
-	// 	const fakeData = {
-	// 		name: 'rahim',
-	// 		bari: 'godagari'
-	// 	};
-	// 	// const url = `http://localhost:5055/addEvent`;
-	// 	// console.log(eventData);
-	// 	// fetch(url, {
-	// 	// 	method: 'POST',
-	// 	// 	headers: {
-	// 	// 		'content-type': 'application/json'
-	// 	// 	},
-	// 	// 	body: JSON.stringify(eventData)
-	// 	// }).then((res) => console.log('server side response', res));
-	// 	postData(fakeData);
-	// };
+	
 
 	const handlePhoto = (event) => {
 		console.log('file changed');
@@ -106,13 +69,6 @@ const AddBook = () => {
 		<div>
 			<h3>Add book</h3>
 
-			{/* <form onSubmit={handleSubmit(onSubmit)}>
-				<input name="name" defaultValue="New exciting Event" ref={register} />
-				<br />
-				<input name="exampleRequired" type="file" onChange={handlePhoto} />
-				<br />
-				<input type="submit" />
-			</form> */}
 			<form onSubmit={handleSubmit}>
 				<div className="form-group col-md-5">
 					<label htmlFor="">Book Name</label>
