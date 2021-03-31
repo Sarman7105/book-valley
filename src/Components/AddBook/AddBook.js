@@ -35,7 +35,7 @@ const AddBook = () => {
 
 
 	const postData = (eventData) => {
-		const url = `http://localhost:5055/addEvent`;
+		const url = `http://localhost:5055/addBook`;
 		console.log(eventData);
 		fetch(url, {
 			method: 'POST',
