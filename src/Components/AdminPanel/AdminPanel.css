@@ -1,0 +1,10 @@
+.panel-container{
+    height: 100vh;
+}
+.admin-menu{
+    background-color: #000;
+    color: #fff;
+}
+.admin-data{
+    background-color: red;
+}
