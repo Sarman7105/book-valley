@@ -7,6 +7,7 @@ import { createContext, useState } from 'react';
 import Header from './Components/Header/Header';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import AdminPanel from './Components/AdminPanel/AdminPanel';
+import CheckOut from './Components/CheckOut/CheckOut';
 const userInfo = {
 	name: '',
 	email: '',
@@ -14,9 +15,12 @@ const userInfo = {
 	isValidUser: false
 };
 export const UserContext = createContext();
+export const BookContext = createContext();
+
 
 function App() {
 	const [user, setUser] = useState(userInfo);
+	const [selectedBook, setSelectedBook] = useState([]);
 
         // const fakeData = { price: 21 };
         // console.log(fakeData);
@@ -32,8 +36,10 @@ function App() {
     
 	return (
 		<UserContext.Provider value={[user, setUser]}>
-			<Router>
-				<Header/>
+			<BookContext.Provider value={[selectedBook, setSelectedBook]}>
+
+				<Router>
+					<Header/>
 				<Switch>
 					<Route path="/home">
 						<Home />
@@ -50,11 +56,15 @@ function App() {
 					<Route path="/admin">
 						<AdminPanel></AdminPanel>
 					</Route>
+					<Route path="/checkout">
+						<CheckOut></CheckOut>
+					</Route>
 					<Route path="*">
 						<NotFound />
 					</Route>
 				</Switch>
 			</Router>
+			</BookContext.Provider>
 		</UserContext.Provider>
 	);
 }

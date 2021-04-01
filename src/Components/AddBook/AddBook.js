@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 
+
 const AddBook = () => {
 	const [ imageUrl, setImageUrl ] = useState(null);
 	const [ bookName, setBookName ] = useState(null);
 	const [ authorName, setAuthorName ] = useState(null);
-	const [ price, setPrice ] = useState(null);
+	const [price, setPrice] = useState(null);
+	
 
 	const handleOnBlur = (event) => {
 	    if (event.target.name === 'book') {
