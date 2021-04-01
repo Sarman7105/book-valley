@@ -9,7 +9,22 @@ const AdminPanel = () => {
 	const [ books, setBooks ] = useState([]);
 	useEffect(() => {
 		fetch('http://localhost:5055/books').then((res) => res.json()).then((data) => setBooks(data));
-	}, []);
+    }, []);
+    const handleDelete = (data) => {
+        console.log('delete button clicked', data._id);
+        const url = `http://localhost:5055/deleteProduct/${data._id}`;
+        console.log(url);
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('product deleted successfully')
+                fetch('http://localhost:5055/books')
+                    .then((res) => res.json())
+                    .then((data) => setBooks(data));
+            });
+    }
 	return (
 		<div className="row panel-container">
 			<div className="col-md-2 admin-menu">
@@ -33,7 +48,7 @@ const AdminPanel = () => {
                             </thead>
                             <tbody>
                                     {
-                                        books.map(book=><ManageProduct book={book}></ManageProduct>)
+                                        books.map(book=><ManageProduct book={book} handleDelete={handleDelete}></ManageProduct>)
                                     }
                             </tbody>
 						</table>
