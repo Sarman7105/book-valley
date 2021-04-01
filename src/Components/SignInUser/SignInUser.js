@@ -49,9 +49,9 @@ const SignInUser = (props) => {
             </form>
             <div className="mb-3">
 				<p className="text-center">
-					Already have an account?
+					Don't have an Account?
 					<span className="text-info link" onClick={function () { setIsNewUser(true) }}>
-					SignIn</span>
+					Create Account</span>
 				</p>
 			</div>
         </div>

@@ -117,14 +117,14 @@ const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 			</form>
 			<div className="mb-3">
 				<p className="text-center">
-					Don't have an account?
+					Already have an Account?
 					<span
 						className="text-info link"
 						onClick={function() {
 							setIsNewUser(false);
 						}}
 					>
-						create an account
+						SignIn
 					</span>
 				</p>
 			</div>

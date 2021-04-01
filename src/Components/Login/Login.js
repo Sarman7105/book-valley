@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from './firebase.config';
 import CreateUser from '../CreateUser/CreateUser';
 import SignInUser from '../SignInUser/SignInUser';
+import { UserContext } from '../../App';
 
 const Login = () => {
-	const [ isNewUser, setIsNewUser ] = useState(true);
+	const [isNewUser, setIsNewUser] = useState(true);
+	const [user, setUser] = useContext(UserContext);
 	const [ userInfo, setUserInfo ] = useState({ email: '', password: '', name: '' });
 	if (firebase.apps.length === 0) {
 		firebase.initializeApp(firebaseConfig);
+	}
+
+	const setInfo = (data) => {
+		const newUser = { ...user };
+		newUser.name = data.displayName;
+		newUser.email = data.email;
+		newUser.isValidUser = true;
+		setUser(newUser);
 	}
 
 	const updateUser = (name) => {
@@ -34,7 +44,8 @@ const Login = () => {
 			// Signed in
 			var user = userCredential.user;
 			updateUser(userInfo.name);
-			console.log(user);
+			console.log(user.email);
+			setInfo(user);
 			// ...
 		});
 
@@ -56,7 +67,9 @@ const Login = () => {
 			.then((userCredential) => {
 				// Signed in
 				var user = userCredential.user;
-				console.log('signed in successfully');
+				console.log('signed in successfully', user);
+				setInfo(user);
+				console.log(user.email);
 				// ...
 			})
 			.catch((error) => {
@@ -69,7 +82,7 @@ const Login = () => {
 
 	return (
 		<div className="container">
-			<h3>{userInfo.email}</h3>
+			<h3>{user.email}</h3>
 			{isNewUser ? (
 				<CreateUser
 					handleSubmit={handleSubmit}

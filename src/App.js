@@ -8,10 +8,10 @@ import Header from './Components/Header/Header';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import AdminPanel from './Components/AdminPanel/AdminPanel';
 import CheckOut from './Components/CheckOut/CheckOut';
+import Orders from './Components/Orders/Orders';
 const userInfo = {
 	name: '',
 	email: '',
-	password: '',
 	isValidUser: false
 };
 export const UserContext = createContext();
@@ -55,6 +55,9 @@ function App() {
 					</Route>
 					<Route path="/admin">
 						<AdminPanel></AdminPanel>
+					</Route>
+					<Route path="/orders">
+						<Orders></Orders>
 					</Route>
 					<Route path="/checkout">
 						<CheckOut></CheckOut>

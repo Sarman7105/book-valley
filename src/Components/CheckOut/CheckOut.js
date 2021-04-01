@@ -1,13 +1,38 @@
 import React, { useContext } from 'react';
-import { BookContext } from '../../App';
+import { useHistory } from 'react-router';
+import { BookContext, UserContext } from '../../App';
 
 const CheckOut = () => {
-	const [ selectedBook, setSelectedBook ] = useContext(BookContext);
+	
+	const history = useHistory();
+	const [selectedBook, setSelectedBook] = useContext(BookContext);
+	const [user, setUser] = useContext(UserContext);
+	
+	const handleCheckOut = () => {
+		const orderDetails = { ...user, products: selectedBook, orderTime: new Date().toDateString() };
+		console.log(JSON.stringify(orderDetails));
+		const url = 'http://localhost:5055/addOrder';
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(orderDetails)
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data) {
+					alert('your order placed successfully');
+			}
+		})
+		history.push('/orders');
+	}
+
 	return (
 		<div className="container">
 			<h1>this is checkout</h1>
 			<h3>Selected Book are {selectedBook.length}</h3>
-			<table class="table table-success table-striped">
+			<table className="table table-success table-striped">
 				<thead>
 					<tr>
 						<th scope="col">Description</th>
@@ -26,6 +51,7 @@ const CheckOut = () => {
 					))}
 				</tbody>
 			</table>
+			<button className="btn btn-success text-right" onClick={handleCheckOut}>Check Out</button>
 		</div>
 	);
 };
