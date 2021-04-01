@@ -32,7 +32,7 @@ const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 				const newUser = { userInfo };
 				newUser.email = eventValue;
 				newUser.isValidUser = true;
-				setUser(newUser);
+				setUserInfo(newUser);
 			}
 		}
 

@@ -7,7 +7,7 @@ import SignInUser from '../SignInUser/SignInUser';
 
 const Login = () => {
 	const [ isNewUser, setIsNewUser ] = useState(true);
-	const [ userInfo, setUserInfo ] = useState({ email: 'sarman7105@gmai.com', password: '', name: '' });
+	const [ userInfo, setUserInfo ] = useState({ email: '', password: '', name: '' });
 	if (firebase.apps.length === 0) {
 		firebase.initializeApp(firebaseConfig);
 	}
@@ -28,30 +28,42 @@ const Login = () => {
 	};
 
 	const handleSubmit = (event) => {
-        console.log(userInfo.email, userInfo.password);
-        debugger
-		firebase
-			.auth()
-			.createUserWithEmailAndPassword(userInfo.email, userInfo.password)
-			.then((userCredential) => {
-				// Signed in
-                var user = userCredential.user;
-                updateUser(userInfo.name);
-                console.log(user);
-				// ...
-            })
-            
-            // .catch((error) => {
-            //     debugger
-			// 	var errorCode = error.code;
-            //     var errorMessage = error.message;
-            //     console.log(errorCode, errorMessage);
-			// 	// ..
-			// });
+		console.log(userInfo.email, userInfo.password);
+		debugger;
+		firebase.auth().createUserWithEmailAndPassword(userInfo.email, userInfo.password).then((userCredential) => {
+			// Signed in
+			var user = userCredential.user;
+			updateUser(userInfo.name);
+			console.log(user);
+			// ...
+		});
+
+		// .catch((error) => {
+		//     debugger
+		// 	var errorCode = error.code;
+		//     var errorMessage = error.message;
+		//     console.log(errorCode, errorMessage);
+		// 	// ..
+		// });
 		event.preventDefault();
 	};
 
 	const handleLogIn = (event) => {
+		console.log("signing in ", userInfo.email, userInfo.password);
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(userInfo.email, userInfo.password)
+			.then((userCredential) => {
+				// Signed in
+				var user = userCredential.user;
+				console.log('signed in successfully');
+				// ...
+			})
+			.catch((error) => {
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				console.log("errormessage",errorCode, errorMessage);
+			});
 		event.preventDefault();
 	};
 

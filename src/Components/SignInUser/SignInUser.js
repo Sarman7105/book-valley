@@ -5,13 +5,15 @@ const SignInUser = (props) => {
     
     const handleLogIn = props.handleLogIn;
 	const setIsNewUser = props.setIsNewUser;
-	const setLogInInfo = props.setLogInInfo;
-	const logInInfo = props.logInInfo;
+	// const setLogInInfo = props.setLogInInfo;
+	// const logInInfo = props.logInInfo;
+	const userInfo = props.userInfo;
+	const setUserInfo = props.setUserInfo;
     const handleOnBlur = (event) => {
-		const newLogInInfo = {...logInInfo};
+		const newUserInfo = {...userInfo};
 		console.log(event.target.name,event.target.value)
-		newLogInInfo[event.target.name] = event.target.value;
-        setLogInInfo(newLogInInfo);
+		newUserInfo[event.target.name] = event.target.value;
+        setUserInfo(newUserInfo);
     }
     return (
         <div className="signup-container">
@@ -47,9 +49,9 @@ const SignInUser = (props) => {
             </form>
             <div className="mb-3">
 				<p className="text-center">
-					Don't have an account?
+					Already have an account?
 					<span className="text-info link" onClick={function () { setIsNewUser(true) }}>
-					create an account</span>
+					SignIn</span>
 				</p>
 			</div>
         </div>
