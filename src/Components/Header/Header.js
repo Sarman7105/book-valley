@@ -23,7 +23,7 @@ const Header = () => {
 						<span className="navbar-toggler-icon" />
 					</button>
 					<Link className="navbar-brand" to="/home">
-                        <img src="https://i.ibb.co/K5NPkg2/Logo.png" className="img-fluid" alt="Logo" border="0"></img>
+                        Book Valley
 					</Link>
 					<div className="collapse navbar-collapse" id="navbarTogglerDemo03">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">

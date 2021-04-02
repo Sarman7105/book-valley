@@ -4,7 +4,6 @@ import { BookContext, UserContext } from '../../App';
 
 const CheckOut = () => {
 	
-	const history = useHistory();
 	const [selectedBook, setSelectedBook] = useContext(BookContext);
 	const [user, setUser] = useContext(UserContext);
 	
@@ -26,7 +25,7 @@ const CheckOut = () => {
 					setSelectedBook([]);
 			}
 		})
-		history.push('/orders');
+		
 	}
 
 	return (

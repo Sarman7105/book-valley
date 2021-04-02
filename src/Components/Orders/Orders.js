@@ -10,12 +10,11 @@ const Orders = () => {
             .then(data => {
                 setItems(data);
             });
-    },[user.email])
+    },[])
     return (
         <div className="container">
-            <h3>this is order component</h3>
-            <h3>Hello {user.email}</h3>
-            <h3>you have ordered {items?.length || 0} items</h3>
+            <h3 className="text-success">Email: {user.email}</h3>
+            <h3 className="text-danger">you have ordered {items?.length || 0} items</h3>
             {
                 items &&
                 <table className="table table-success table-striped">
