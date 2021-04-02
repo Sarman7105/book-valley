@@ -123,8 +123,7 @@ const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 						className="text-info link"
 						onClick={function() {
 							setIsNewUser(false);
-						}}
-					>
+						}}>
 						SignIn
 					</span>
 				</p>

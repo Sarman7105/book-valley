@@ -84,7 +84,6 @@ const Login = () => {
 
 	const handleSubmit = (event) => {
 		console.log(userInfo.email, userInfo.password);
-		debugger;
 		firebase.auth().createUserWithEmailAndPassword(userInfo.email, userInfo.password)
 			.then((userCredential) => {
 			// Signed in
