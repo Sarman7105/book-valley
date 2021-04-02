@@ -23,6 +23,7 @@ const CheckOut = () => {
 			.then(data => {
 				if (data) {
 					alert('your order placed successfully');
+					setSelectedBook([]);
 			}
 		})
 		history.push('/orders');

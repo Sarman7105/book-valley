@@ -5,11 +5,15 @@ import firebaseConfig from './firebase.config';
 import CreateUser from '../CreateUser/CreateUser';
 import SignInUser from '../SignInUser/SignInUser';
 import { UserContext } from '../../App';
+import { useHistory, useLocation } from 'react-router';
 
 const Login = () => {
 	const [isNewUser, setIsNewUser] = useState(true);
 	const [user, setUser] = useContext(UserContext);
-	const [ userInfo, setUserInfo ] = useState({ email: '', password: '', name: '' });
+	const [userInfo, setUserInfo] = useState({ email: '', password: '', name: '' });
+	let history = useHistory();
+	let location = useLocation();
+	let { from } = location.state || { from: { pathname: "/" } };
 	if (firebase.apps.length === 0) {
 		firebase.initializeApp(firebaseConfig);
 	}
@@ -46,6 +50,7 @@ const Login = () => {
 			updateUser(userInfo.name);
 			console.log(user.email);
 			setInfo(user);
+			history.replace(from);
 			// ...
 		});
 
@@ -69,6 +74,7 @@ const Login = () => {
 				var user = userCredential.user;
 				console.log('signed in successfully', user);
 				setInfo(user);
+				history.replace(from);
 				console.log(user.email);
 				// ...
 			})
