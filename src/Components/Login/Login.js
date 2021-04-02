@@ -9,7 +9,7 @@ import { useHistory, useLocation } from 'react-router';
 import './Login.css';
 
 const Login = () => {
-	const [isNewUser, setIsNewUser] = useState(true);
+	const [isNewUser, setIsNewUser] = useState(false);
 	const [user, setUser] = useContext(UserContext);
 	const [userInfo, setUserInfo] = useState({ email: '', password: '', name: '' });
 	let history = useHistory();
