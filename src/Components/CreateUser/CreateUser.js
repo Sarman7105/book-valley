@@ -62,7 +62,7 @@ const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 	return (
 		<div className="signup-container">
 			<h3 className="text-center">Create an account</h3>
-			<h3>{userInfo.email}</h3>
+			{/* <h3>{userInfo.email}</h3> */}
 			<form onSubmit={handleSubmit}>
 				<div className="mb-3">
 					<label className="form-label">Name</label>
