@@ -6,6 +6,7 @@ import CreateUser from '../CreateUser/CreateUser';
 import SignInUser from '../SignInUser/SignInUser';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router';
+import './Login.css';
 
 const Login = () => {
 	const [isNewUser, setIsNewUser] = useState(true);
@@ -126,9 +127,45 @@ const Login = () => {
 	};
 
 	return (
-		<div className="container">
-			<h3>{user.email}</h3>
-			{isNewUser ? (
+		// <div className="container">
+		// 	<h3>{user.email}</h3>
+		// 	{isNewUser ? (
+		// 		<CreateUser
+		// 			handleSubmit={handleSubmit}
+		// 			setIsNewUser={setIsNewUser}
+		// 			setUserInfo={setUserInfo}
+		// 			userInfo={userInfo}
+		// 		/>
+		// 	) : (
+		// 		<SignInUser
+		// 			handleLogIn={handleLogIn}
+		// 			setIsNewUser={setIsNewUser}
+		// 			setUserInfo={setUserInfo}
+		// 			userInfo={userInfo}
+		// 		/>
+		// 	)}
+		// 	<p className="text-center">or</p>
+		// 		<div className="mt-1 button-container">
+		// 			<button onClick={handleGoogleLogin} className="login-button">
+		// 				<span>
+		// 					<img
+		// 						className="text-left"
+		// 						src="https://i.ibb.co/TgdQSf5/Group-573.png"
+		// 						alt="Group-573"
+		// 						border="0"
+		// 					/>
+		// 				</span>
+		// 				continue with google
+		// 			</button>
+		// 		</div>
+		// </div>
+
+		<div className="d-flex container custom-container justify-content-center align-items-center">
+			
+			<div className="inner-container">
+				{/* <h3 className="text-danger">{ error}</h3>
+				<h3 className="text-success">{ success}</h3> */}
+				{isNewUser ? (
 				<CreateUser
 					handleSubmit={handleSubmit}
 					setIsNewUser={setIsNewUser}
@@ -143,44 +180,22 @@ const Login = () => {
 					userInfo={userInfo}
 				/>
 			)}
+				<p className="text-center">or</p>
+				<div className="mt-1 button-container">
+					<button onClick={handleGoogleLogin} className="login-button">
+						<span>
+							<img
+								className="text-left"
+								src="https://i.ibb.co/TgdQSf5/Group-573.png"
+								alt="Group-573"
+								border="0"
+							/>
+						</span>
+						continue with google
+					</button>
+				</div>
+			</div>
 		</div>
-
-		//copy code from
-		// <div className="d-flex container custom-container justify-content-center align-items-center">
-			
-		// 	<div className="inner-container">
-		// 		<h3 className="text-danger">{ error}</h3>
-		// 		<h3 className="text-success">{ success}</h3>
-		// 		{isNewUser ? (
-		// 			<CreateUser
-		// 				handleSubmit={handleSubmit}
-		// 				setIsNewUser={setIsNewUser}
-		// 				setLoggedInInfo={setLoggedInInfo}
-		// 			/>
-		// 		) : (
-		// 			<SignInUser
-		// 				handleLogIn={handleLogIn}
-		// 				setIsNewUser={setIsNewUser}
-		// 				logInInfo={logInInfo}
-		// 				setLogInInfo={setLogInInfo}
-		// 			/>
-		// 		)}
-		// 		<p className="text-center">or</p>
-		// 		<div className="mt-1 button-container">
-		// 			<button onClick={handleGoogleLogin} className="login-button">
-		// 				<span>
-		// 					<img
-		// 						className="text-left"
-		// 						src="https://i.ibb.co/TgdQSf5/Group-573.png"
-		// 						alt="Group-573"
-		// 						border="0"
-		// 					/>
-		// 				</span>
-		// 				continue with google
-		// 			</button>
-		// 		</div>
-		// 	</div>
-		// </div>
 	);
 };
 
