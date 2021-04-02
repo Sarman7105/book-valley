@@ -12,8 +12,9 @@ const CreateUser = ({ handleSubmit, setIsNewUser, setUserInfo, userInfo }) => {
 	// }, []);
 
 	const isValidPassword = (password) => {
-		const regularExpression = /\d/;
-		return regularExpression.test(password) && password.length >= 6;
+		// const regularExpression = /\d/;
+		// return regularExpression.test(password) && password.length >= 6;
+		return true;
 	};
 	const isValidEmail = (email) => {
 		const regularExpression = /\S+@\S+\.\S+/;
