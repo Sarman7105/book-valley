@@ -40,6 +40,7 @@ const Login = () => {
 				var token = credential.accessToken;
 				
 				const userInfo = result.user;
+				console.log('success');
 				setInfo(userInfo);
 				// const newUser = { ...user };
 				// console.log('successful', userInfo);
@@ -53,7 +54,8 @@ const Login = () => {
 			})
 		.catch((error) => {
 				var errorCode = error.code;
-				var errorMessage = error.message;
+			var errorMessage = error.message;
+			console.log(errorMessage);
 				
 				// var email = error.email;
 				
