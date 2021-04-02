@@ -6,7 +6,7 @@ const Orders = () => {
     const [items, setItems] = useState([]);
     const [time, setTime] = useState('');
     useEffect(() => {
-        fetch("http://localhost:5055/orders?email="+user.email)
+        fetch("https://banana-crisp-72370.herokuapp.com/orders?email="+user.email)
             .then(res => res.json())
             .then(data => {
                 setItems(data[0]?.products);

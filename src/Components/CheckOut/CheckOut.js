@@ -11,7 +11,7 @@ const CheckOut = () => {
 	const handleCheckOut = () => {
 		const orderDetails = { ...user, products: selectedBook, orderTime: new Date().toDateString() };
 		console.log(JSON.stringify(orderDetails));
-		const url = 'http://localhost:5055/addOrder';
+		const url = 'https://banana-crisp-72370.herokuapp.com/addOrder';
 		fetch(url, {
 			method: 'POST',
 			headers: {

@@ -8,11 +8,11 @@ const AdminPanel = () => {
 	const [ isAddingBook, setIsAddingBook ] = useState(true);
 	const [ books, setBooks ] = useState([]);
 	useEffect(() => {
-		fetch('http://localhost:5055/books').then((res) => res.json()).then((data) => setBooks(data));
+		fetch('https://banana-crisp-72370.herokuapp.com/books').then((res) => res.json()).then((data) => setBooks(data));
     }, []);
     const handleDelete = (data) => {
         console.log('delete button clicked', data._id);
-        const url = `http://localhost:5055/deleteProduct/${data._id}`;
+        const url = `https://banana-crisp-72370.herokuapp.com/deleteProduct/${data._id}`;
         console.log(url);
         fetch(url, {
             method: 'DELETE'
@@ -20,7 +20,7 @@ const AdminPanel = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('product deleted successfully')
-                fetch('http://localhost:5055/books')
+                fetch('https://banana-crisp-72370.herokuapp.com/books')
                     .then((res) => res.json())
                     .then((data) => setBooks(data));
             });

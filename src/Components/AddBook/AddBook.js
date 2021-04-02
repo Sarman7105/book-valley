@@ -37,7 +37,7 @@ const AddBook = () => {
 
 
 	const postData = (eventData) => {
-		const url = `http://localhost:5055/addBook`;
+		const url = `https://banana-crisp-72370.herokuapp.com/addBook`;
 		console.log(eventData);
 		fetch(url, {
 			method: 'POST',
