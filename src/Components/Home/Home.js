@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Books from '../Books/Books';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const Home = () => {
 	const [ books, setBooks ] = useState([]);
@@ -8,11 +9,11 @@ const Home = () => {
 	}, []);
 	return (
 		<div className="container">
-			<h1>this is home component</h1>
-            <h3>size of book is {books.length}</h3>
-            
-            <div className="row row-cols-1 row-cols-md-3 g-4">
-                {books.map((book) => <Books key={book._id} book={book} />)}
+			<div className="row row-cols-1 row-cols-md-3 g-4">
+				{
+					(books.length===0)?<LoadingPage></LoadingPage>:
+                	books.map((book) => <Books key={book._id} book={book} />)
+				}
             </div>
 		</div>
 	);
