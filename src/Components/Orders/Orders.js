@@ -4,13 +4,11 @@ import { UserContext } from '../../App';
 const Orders = () => {
     const [user, setUser] = useContext(UserContext);
     const [items, setItems] = useState([]);
-    const [time, setTime] = useState('');
     useEffect(() => {
         fetch("https://banana-crisp-72370.herokuapp.com/orders?email="+user.email)
             .then(res => res.json())
             .then(data => {
-                setItems(data[0]?.products);
-                setTime(data[0]?.orderTime);
+                setItems(data);
             });
     },[user.email])
     return (
@@ -32,9 +30,9 @@ const Orders = () => {
 				<tbody>
 					{items.map((item) => (
 						<tr key={item._id}>
-                            <td>{ item.name}</td>
-                            <td>{item.value}</td>
-                            <td>{ time}</td>
+                            <td>{ item.products[0].name}</td>
+                            <td>{item.products[0].value}</td>
+                            <td>{ item.orderTime}</td>
 						</tr>
 					))}
 				</tbody>

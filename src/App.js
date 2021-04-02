@@ -38,7 +38,7 @@ function App() {
 							<Home />
 						</Route>
 
-						<PrivateRoute path="/admin">
+						{/* <PrivateRoute path="/admin">
 							<AdminPanel />
 						</PrivateRoute>
 						<PrivateRoute path="/orders">
@@ -46,17 +46,17 @@ function App() {
 						</PrivateRoute>
 						<PrivateRoute path="/checkout">
 							<CheckOut />
-						</PrivateRoute>
+						</PrivateRoute> */}
 
-						{/* <Route path="/admin">
-						<AdminPanel></AdminPanel>
-					</Route> */}
-						{/* <Route path="/orders">
+						<Route path="/admin">
+							<AdminPanel></AdminPanel>
+						</Route>
+						<Route path="/orders">
 							<Orders />
-						</Route> */}
-						{/* <Route path="/checkout">
+						</Route>
+						 <Route path="/checkout">
 							<CheckOut />
-						</Route> */}
+						</Route>
 						<Route path="*">
 							<NotFound />
 						</Route>
