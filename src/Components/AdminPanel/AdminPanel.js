@@ -37,7 +37,7 @@ const AdminPanel = () => {
 					{isAddingBook ? (
 						<AddBook />
 					) : (
-						<table class="table table-borderless">
+						<table className="table table-borderless">
 							<thead>
 								<tr>
 									<th scope="col">Book Name</th>
@@ -48,7 +48,7 @@ const AdminPanel = () => {
                             </thead>
                             <tbody>
                                     {
-                                        books.map(book=><ManageProduct book={book} handleDelete={handleDelete}></ManageProduct>)
+                                        books.map(book=><ManageProduct key={book._id} book={book} handleDelete={handleDelete}></ManageProduct>)
                                     }
                             </tbody>
 						</table>

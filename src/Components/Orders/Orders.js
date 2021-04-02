@@ -31,7 +31,7 @@ const Orders = () => {
 
 				<tbody>
 					{items.map((item) => (
-						<tr>
+						<tr key={item._id}>
                             <td>{ item.name}</td>
                             <td>{item.value}</td>
                             <td>{ time}</td>

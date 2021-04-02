@@ -12,7 +12,7 @@ const Home = () => {
             <h3>size of book is {books.length}</h3>
             
             <div className="row row-cols-1 row-cols-md-3 g-4">
-                {books.map((book) => <Books book={book} />)}
+                {books.map((book) => <Books key={book._id} book={book} />)}
             </div>
 		</div>
 	);
